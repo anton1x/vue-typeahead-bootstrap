@@ -20,6 +20,8 @@
         <slot name="suggestion" v-bind="{ data, htmlText }" />
       </template>
     </vue-typeahead-bootstrap-list-item>
+    <slot name="aftersuggestion">
+    </slot>
   </div>
 </template>
 
@@ -175,6 +177,7 @@ export default {
     },
 
     handleHit(item, evt) {
+      console.log('HIIIT')
       this.$emit('hit', item)
       evt.preventDefault()
     },

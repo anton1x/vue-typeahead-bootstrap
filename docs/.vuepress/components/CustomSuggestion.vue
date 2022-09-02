@@ -30,6 +30,12 @@
           <i class="ml-auto fab fa-github-square fa-2x"></i>
         </div>
       </template>
+
+      <template slot="aftersuggestion">
+        <div>
+          <a class="no-unfocus" href="javascript://" @click="alert123">TEST</a>
+        </div>
+      </template>
     </vue-typeahead-bootstrap>
   </div>
 </template>
@@ -51,6 +57,9 @@
     },
 
     methods: {
+      alert123() {
+        this.users.pop()
+      },
       lookupUser: debounce(function(){
         // in practice this action should be debounced
         fetch(`https://api.github.com/search/users?q=${this.query}`)

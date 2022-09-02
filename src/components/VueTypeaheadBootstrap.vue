@@ -70,6 +70,9 @@
       <template v-if="$scopedSlots.suggestion" slot="suggestion" slot-scope="{ data, htmlText }">
         <slot name="suggestion" v-bind="{ data, htmlText }" />
       </template>-->
+      <template slot="aftersuggestion">
+        <slot name="aftersuggestion"></slot>
+      </template>
     </vue-typeahead-bootstrap-list>
   </div>
 </template>
@@ -244,7 +247,7 @@ export default {
 
     runFocusOut(evt) {
       const tgt = evt.relatedTarget
-      if (tgt && tgt.classList.contains('vbst-item')) {
+      if (tgt && (tgt.classList.contains('vbst-item') || tgt.classList.contains('no-unfocus'))) {
         return
       }
       this.$emit('blur', evt)
